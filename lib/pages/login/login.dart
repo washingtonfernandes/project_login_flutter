@@ -12,6 +12,7 @@ class AutenticacaoTela extends StatefulWidget {
 class _AutenticacaoTelaState extends State<AutenticacaoTela> {
   //false = cadastrar
   bool queroEntrar = true;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,9 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
           ),
           Padding(
             padding: const EdgeInsets.all(24.0),
+            //Inserir validação - Form
             child: Form(
+              key: _formKey,
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -47,6 +50,18 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                         ),
                         TextFormField(
                           decoration: getAuthenticationInputDecoration("Email"),
+                          validator: (String? value) {
+                            if (value == null) {
+                              return "O email não pode ser vazio!";
+                            }
+                            if (value.length < 5) {
+                              return "Email não válido!";
+                            }
+                            if (!value.contains("@")) {
+                              return "Email não válido!";
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(
                           height: 16,
@@ -54,6 +69,15 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                         TextFormField(
                           decoration: getAuthenticationInputDecoration("Senha"),
                           obscureText: true,
+                          validator: (String? value) {
+                            if (value == null) {
+                              return "A senha não pode ser vazio!";
+                            }
+                            if (value.length < 5) {
+                              return "A senha é curta!";
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(
                           height: 16,
@@ -66,6 +90,15 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                                   decoration: getAuthenticationInputDecoration(
                                       "Confirme a senha"),
                                   obscureText: true,
+                                  validator: (String? value) {
+                                    if (value == null) {
+                                      return "A confirmação de senha não pode ser vazio!";
+                                    }
+                                    if (value.length < 5) {
+                                      return "A senha é curta!";
+                                    }
+                                    return null;
+                                  },
                                 ),
                                 SizedBox(
                                   height: 16,
@@ -73,6 +106,15 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                                 TextFormField(
                                   decoration:
                                       getAuthenticationInputDecoration("Nome"),
+                                  validator: (String? value) {
+                                    if (value == null) {
+                                      return "O nome não pode ser vazio!";
+                                    }
+                                    if (value.length < 5) {
+                                      return "O nome é curto!";
+                                    }
+                                    return null;
+                                  },
                                 ),
                               ],
                             )),
@@ -80,7 +122,9 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                           height: 36,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            botaoPrincipalClicado();
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black, // Background color
                             onPrimary:
@@ -125,5 +169,13 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
         ],
       ),
     );
+  }
+
+  botaoPrincipalClicado() {
+    if (_formKey.currentState!.validate()) {
+      print("Form válido");
+    } else {
+      print("Form inválido");
+    }
   }
 }
