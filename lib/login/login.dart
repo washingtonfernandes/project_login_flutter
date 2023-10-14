@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_filtro/components/decoracao_autenticacao.dart';
 import 'package:project_filtro/comum/cores.dart';
 
 class AutenticacaoTela extends StatefulWidget {
@@ -35,42 +36,43 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
+                      //imagem
                       children: [
                         Image.asset(
                           "assets/images/vofaze3.png",
                           height: 120,
                         ),
                         SizedBox(
-                          height: 36,
+                          height: 60,
                         ),
                         TextFormField(
-                          decoration: InputDecoration(
-                            label: Text("Email"),
-                          ),
+                          decoration: getAuthenticationInputDecoration("Email"),
                         ),
                         SizedBox(
                           height: 16,
                         ),
                         TextFormField(
-                          decoration: InputDecoration(
-                            label: Text("senha"),
-                          ),
+                          decoration: getAuthenticationInputDecoration("Senha"),
                           obscureText: true,
+                        ),
+                        SizedBox(
+                          height: 16,
                         ),
                         Visibility(
                             visible: !queroEntrar,
                             child: Column(
                               children: [
                                 TextFormField(
-                                  decoration: InputDecoration(
-                                    label: Text("Confirme senha"),
-                                  ),
+                                  decoration: getAuthenticationInputDecoration(
+                                      "Confirme a senha"),
                                   obscureText: true,
                                 ),
+                                SizedBox(
+                                  height: 16,
+                                ),
                                 TextFormField(
-                                  decoration: InputDecoration(
-                                    label: Text("Nome"),
-                                  ),
+                                  decoration:
+                                      getAuthenticationInputDecoration("Nome"),
                                 ),
                               ],
                             )),
@@ -79,13 +81,19 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                         ),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black, // Background color
+                            onPrimary:
+                                Colors.yellow, // Text Color (Foreground color)
+                          ),
                           child: Text(
+                            //boleano para entrar ou cadastrar
                             (queroEntrar) ? "Entrar" : "Cadastrar",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -97,6 +105,7 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                             });
                           },
                           child: Text(
+                            //boleano para entrar ou cadastrar
                             (queroEntrar)
                                 ? "Ainda não é cadastrado? Cadastre-se!"
                                 : "Já temuma conta? Entre!",
