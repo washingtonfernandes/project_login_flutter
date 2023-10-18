@@ -17,7 +17,6 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow,
       body: Stack(
         children: [
           Container(
