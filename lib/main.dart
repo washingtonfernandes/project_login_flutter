@@ -4,5 +4,5 @@ import 'package:project_filtro/vofaze.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const vofaze());
+  runApp(const Vofaze());
 }
