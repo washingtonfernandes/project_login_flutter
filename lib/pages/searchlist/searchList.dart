@@ -441,13 +441,11 @@ class _SearchListState extends State<SearchList> {
   }
 
   void showEditTicketDialog(ListaTickets ticket) {
-    int selectedUsuarioIndex = usuarios.indexOf(ticket.usuario);
-    int selectedAmbienteIndex = ambientes.indexOf(ticket.ambientes);
-    int selectedSetorIndex =
-        setores.indexOf(ticket.setorNome); // Alterado o nome do parâmetro
-
     TextEditingController descricaoController =
         TextEditingController(text: ticket.descricao);
+    String selectedUsuario = ticket.usuario;
+    String selectedAmbiente = ticket.ambientes;
+    String selectedSetor = ticket.setorNome; // Alterado o nome do parâmetro
 
     showDialog(
       context: context,
@@ -459,7 +457,7 @@ class _SearchListState extends State<SearchList> {
               padding: const EdgeInsets.all(8.0),
               child: Center(
                 child: Text(
-                  "Alterar o ticket",
+                  "Editar Ticket",
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -472,69 +470,56 @@ class _SearchListState extends State<SearchList> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Column(
-                  children: [
-                    buildDropdownButton(
-                      usuarios[selectedUsuarioIndex],
-                      usuarios,
-                      (String? newValue) {
-                        setState(() {
-                          selectedUsuarioIndex = usuarios.indexOf(newValue!);
-                        });
-                      },
-                    ),
-                    buildDropdownButton(
-                      ambientes[selectedAmbienteIndex],
-                      ambientes,
-                      (String? newValue) {
-                        setState(() {
-                          selectedAmbienteIndex = ambientes.indexOf(newValue!);
-                        });
-                      },
-                    ),
-                    buildDropdownButton(
-                      setores[selectedSetorIndex],
-                      setores,
-                      (String? newValue) {
-                        setState(() {
-                          selectedSetorIndex = setores.indexOf(newValue!);
-                        });
-                      },
-                    ),
-                  ],
+                buildDropdownButton(
+                  selectedUsuario,
+                  usuarios,
+                  (String? newValue) {
+                    setState(() {
+                      selectedUsuario = newValue!;
+                    });
+                  },
+                ),
+                buildDropdownButton(
+                  selectedAmbiente,
+                  ambientes,
+                  (String? newValue) {
+                    setState(() {
+                      selectedAmbiente = newValue!;
+                    });
+                  },
+                ),
+                buildDropdownButton(
+                  selectedSetor,
+                  setores,
+                  (String? newValue) {
+                    setState(() {
+                      selectedSetor = newValue!;
+                    });
+                  },
                 ),
                 buildDescriptionTextField(descricaoController),
               ],
             ),
           ),
           actions: [
-            Center(
-              child: Column(
-                children: [
-                  buildCancelButton(),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.green,
-                      onPrimary: Colors.black,
-                      shadowColor: Colors.greenAccent,
-                    ),
-                    child: Text(
-                      "Salvar",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        ticket.usuario = usuarios[selectedUsuarioIndex];
-                        ticket.ambientes = ambientes[selectedAmbienteIndex];
-                        ticket.setorNome = setores[
-                            selectedSetorIndex]; // Alterado o nome do parâmetro
-                        ticket.descricao = descricaoController.text;
-                      });
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                ],
+            buildCancelButton(),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+                onPrimary: Colors.black,
+                shadowColor: Colors.greenAccent,
               ),
+              child: Text("Salvar"),
+              onPressed: () {
+                setState(() {
+                  ticket.usuario = selectedUsuario;
+                  ticket.ambientes = selectedAmbiente;
+                  ticket.setorNome =
+                      selectedSetor; // Alterado o nome do parâmetro
+                  ticket.descricao = descricaoController.text;
+                });
+                Navigator.of(context).pop();
+              },
             ),
           ],
         );

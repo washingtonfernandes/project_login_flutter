@@ -37,7 +37,6 @@ class Home extends StatelessWidget {
                         SizedBox(
                           height: 60,
                         ),
-                        
                         ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -50,7 +49,79 @@ class Home extends StatelessWidget {
                             onPrimary: Colors.yellow,
                           ),
                           child: Text(
-                            "Hotel HSP",
+                            "Tickets",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                              color: MinhasCores.amarelo,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AutenticacaoTela()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            onPrimary: Colors.yellow,
+                          ),
+                          child: Text(
+                            "Setores",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AutenticacaoTela()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            onPrimary: Colors.yellow,
+                          ),
+                          child: Text(
+                            "Ambientes",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AutenticacaoTela()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            onPrimary: Colors.yellow,
+                          ),
+                          child: Text(
+                            "Relatórios",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 18,
