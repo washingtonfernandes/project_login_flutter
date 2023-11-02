@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/pages/home/home.dart';
+import 'package:project_filtro/pages/login/login.dart';
 import 'package:project_filtro/pages/splash-screen/splash-screen.dart';
 
 class Vofaze extends StatelessWidget {
@@ -14,7 +14,7 @@ class Vofaze extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const SplashScreen();
               } else {
-                return const Home();
+                return AutenticacaoTela();
               }
             }));
   }

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'dart:io';
 import 'package:project_filtro/comum/cores.dart';
 
@@ -71,20 +69,6 @@ class _SearchListState extends State<SearchList> {
             item.descricao.toLowerCase().contains(query);
       }).toList();
     });
-  }
-
-  Future<void> getImage(ListaTickets ticket) async {
-    final _picker = ImagePicker();
-    final PermissionStatus status = await Permission.photos.request();
-    if (status.isGranted) {
-      final XFile? pickedFile =
-          await _picker.pickImage(source: ImageSource.gallery);
-      if (pickedFile != null) {
-        setState(() {
-          ticket.image = File(pickedFile.path);
-        });
-      }
-    }
   }
 
   @override
@@ -205,9 +189,7 @@ class _SearchListState extends State<SearchList> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 ElevatedButton.icon(
-                  onPressed: () {
-                    getImage(ticket);
-                  },
+                  onPressed: () {},
                   icon: Icon(
                     Icons.add_a_photo,
                     color: Colors.black,

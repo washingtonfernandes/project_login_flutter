@@ -38,12 +38,7 @@ class Home extends StatelessWidget {
                           height: 60,
                         ),
                         ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AutenticacaoTela()));
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,
