@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_filtro/comum/backImage.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -10,27 +10,40 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
-  late final AnimationController controllerLoading =
-      AnimationController(duration: const Duration(seconds: 2), vsync: this);
+  late final AnimationController controllerLoading;
 
-  late final Animation<AlignmentGeometry> animationLoading =
-      Tween<AlignmentGeometry>(
-              begin: Alignment.centerLeft, end: Alignment.center)
-          .animate(
-    CurvedAnimation(parent: controllerLoading, curve: Curves.linear),
-  );
-
-  late final Animation<AlignmentGeometry> animationLoading2 =
-      Tween<AlignmentGeometry>(
-              begin: Alignment.bottomRight, end: Alignment.center)
-          .animate(
-    CurvedAnimation(parent: controllerLoading, curve: Curves.linear),
-  );
+  late final Animation<AlignmentGeometry> animationLoading;
+  late final Animation<AlignmentGeometry> animationLoading2;
 
   @override
   void initState() {
-    controllerLoading.forward();
     super.initState();
+    controllerLoading = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+
+    animationLoading = Tween<AlignmentGeometry>(
+      begin: Alignment.centerLeft,
+      end: Alignment.center,
+    ).animate(
+      CurvedAnimation(parent: controllerLoading, curve: Curves.linear),
+    );
+
+    animationLoading2 = Tween<AlignmentGeometry>(
+      begin: Alignment.bottomRight,
+      end: Alignment.center,
+    ).animate(
+      CurvedAnimation(parent: controllerLoading, curve: Curves.linear),
+    );
+
+    controllerLoading.forward();
+  }
+
+  @override
+  void dispose() {
+    controllerLoading.dispose(); // Dispose o AnimationController.
+    super.dispose();
   }
 
   @override
@@ -40,7 +53,6 @@ class _SplashScreenState extends State<SplashScreen>
       body: Stack(
         children: [
           BackImage(),
-          // Adicione a imagem da splash 0 primeiro
           Positioned(
             top: size.height * 0.32,
             left: size.width * 0.015,
@@ -51,7 +63,6 @@ class _SplashScreenState extends State<SplashScreen>
               child: Image.asset('assets/splash/splash_0.png'),
             ),
           ),
-          // Em seguida, adicione as imagens da splash 1 e 2
           Positioned(
             top: size.height * 0.46,
             left: -290,

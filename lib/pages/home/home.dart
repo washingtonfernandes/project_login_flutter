@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/comum/cores.dart';
-import 'package:project_filtro/pages/login/login.dart';
 import 'package:project_filtro/servicos/authServices.dart';
 
 class Home extends StatelessWidget {

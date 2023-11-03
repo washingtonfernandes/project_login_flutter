@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/components/decoracao_autenticacao.dart';
-import 'package:project_filtro/comum/cores.dart';
 import 'package:project_filtro/comum/snackbar.dart';
 import 'package:project_filtro/servicos/authServices.dart';
 
@@ -28,11 +27,10 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [MinhasCores.amarelo, MinhasCores.amareloBaixo],
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/fundo_app.png"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
