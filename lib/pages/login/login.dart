@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/components/decoracao_autenticacao.dart';
 import 'package:project_filtro/comum/cores.dart';
+import 'package:project_filtro/comum/snackbar.dart';
 import 'package:project_filtro/servicos/authServices.dart';
 
 class AutenticacaoTela extends StatefulWidget {
@@ -183,10 +184,25 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
         print("Cadastro validado");
         print(
             "${_emailController.text}, ${_senhaController.text}, ${_nomeController.text}");
-        _autenticaServico.cadastrarUsuario(
+        _autenticaServico
+            .cadastrarUsuario(
           nome: nome,
           senha: senha,
           email: email,
+        )
+            .then(
+          (String? erro) {
+            if (erro != null) {
+              //retornou com erro
+              showSnackbar(context: context, texto: erro);
+            } else {
+              //deu certo
+              showSnackbar(
+                  context: context,
+                  texto: "Cadastro efetuado com sucesso",
+                  iserro: false);
+            }
+          },
         );
       }
     } else {

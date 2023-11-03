@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AutenticacaoServico {
   FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-  cadastrarUsuario({
+  Future<String?> cadastrarUsuario({
     required String nome,
     required String senha,
     required String email,
@@ -16,10 +16,12 @@ class AutenticacaoServico {
       );
 
       await userCredential.user!.updateDisplayName(nome);
+      return null;
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
-        print("O usuário já está cadastrado");
+        return "O usuário já está cadastrado";
       }
+      return "Erro desconhecido!";
     }
   }
 }
