@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/comum/cores.dart';
 import 'package:project_filtro/pages/login/login.dart';
+import 'package:project_filtro/servicos/authServices.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -57,12 +58,7 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AutenticacaoTela()));
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,
@@ -81,12 +77,7 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AutenticacaoTela()));
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,
@@ -105,12 +96,7 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AutenticacaoTela()));
-                          },
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,
@@ -125,6 +111,17 @@ class Home extends StatelessWidget {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ListTile(
+                            leading: Icon(Icons.logout),
+                            title: Text(
+                              "Deslogar",
+                            ),
+                            onTap: () {
+                              AutenticacaoServico().deslogar();
+                            }),
                       ]),
                 ),
               ),
