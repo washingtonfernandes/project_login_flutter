@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/comum/cores.dart';
+import 'package:project_filtro/pages/unidades/units.dart';
 import 'package:project_filtro/services/authServices.dart';
 
 class Home extends StatelessWidget {
@@ -38,7 +39,12 @@ class Home extends StatelessWidget {
                           height: 60,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Units()));
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,

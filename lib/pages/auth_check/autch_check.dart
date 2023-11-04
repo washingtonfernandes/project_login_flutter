@@ -23,7 +23,6 @@ class _AuthCheckState extends State<AuthCheck> {
     } else {
       return const Home();
     }
-
   }
 
   loading() {

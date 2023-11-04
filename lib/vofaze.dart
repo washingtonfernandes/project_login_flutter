@@ -16,7 +16,7 @@ class Vofaze extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const SplashScreen();
               } else {
-                return RoteadorTela();
+                return const RoteadorTela();
               }
             }));
   }
@@ -32,7 +32,7 @@ class RoteadorTela extends StatelessWidget {
       stream: FirebaseAuth.instance.userChanges(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Home();
+          return const Home();
         } else {
           return const AutenticacaoTela();
         }

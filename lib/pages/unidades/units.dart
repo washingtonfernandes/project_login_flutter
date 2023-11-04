@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/comum/cores.dart';
-import 'package:project_filtro/pages/login/login.dart';
+import 'package:project_filtro/pages/home/home.dart';
+import 'package:project_filtro/pages/searchlist/searchList.dart';
 
 class Units extends StatelessWidget {
   const Units({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class Units extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AutenticacaoTela()));
+                                    builder: (context) => SearchList()));
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
