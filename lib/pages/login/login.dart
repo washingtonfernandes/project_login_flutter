@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/components/decoracao_autenticacao.dart';
 import 'package:project_filtro/comum/snackbar.dart';
-import 'package:project_filtro/servicos/authServices.dart';
+import 'package:project_filtro/services/authServices.dart';
 
 class AutenticacaoTela extends StatefulWidget {
   const AutenticacaoTela({super.key});
@@ -139,7 +139,7 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                               ),
                             ),
                           ),
-                          Divider(),
+                          const Divider(),
                           TextButton(
                             onPressed: () {
                               setState(() {

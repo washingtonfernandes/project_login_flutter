@@ -1,7 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
-class AutenticacaoServico {
-  FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+class AutenticacaoServico with ChangeNotifier {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  User? _usuario;
+
+  User? get usuario => _usuario;
+
+  bool isLoading = true;
+
+  AutenticacaoServico() {
+    _firebaseAuth.authStateChanges().listen((user) {
+      _usuario = user;
+      isLoading = false;
+      notifyListeners();
+    });
+  }
 
   Future<String?> cadastrarUsuario({
     required String nome,
@@ -36,7 +50,6 @@ class AutenticacaoServico {
     }
   }
 
-  // Deslogar
   Future<void> deslogar() async {
     return _firebaseAuth.signOut();
   }

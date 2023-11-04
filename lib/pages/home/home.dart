@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_filtro/comum/cores.dart';
-import 'package:project_filtro/servicos/authServices.dart';
+import 'package:project_filtro/services/authServices.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -113,14 +113,23 @@ class Home extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        ListTile(
-                            leading: Icon(Icons.logout),
-                            title: Text(
-                              "Deslogar",
+                        Container(
+                          alignment: Alignment.center,
+                          child: ListTile(
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Sair",
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                              ],
                             ),
                             onTap: () {
                               AutenticacaoServico().deslogar();
-                            }),
+                            },
+                          ),
+                        ),
                       ]),
                 ),
               ),
