@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/comum/cores.dart';
-import 'package:project_filtro/pages/home/home.dart';
-import 'package:project_filtro/pages/searchlist/searchList.dart';
+import 'package:project_vofaze/comum/cores.dart';
+import 'package:project_vofaze/pages/searchlist/search_list.dart';
 
 class Units extends StatelessWidget {
   const Units({Key? key}) : super(key: key);
@@ -9,14 +8,17 @@ class Units extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MinhasCores.amarelo,
+        elevation: 0,
+      ),
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [MinhasCores.amarelo, MinhasCores.amareloBaixo],
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/fundo_app.png"),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -25,15 +27,15 @@ class Units extends StatelessWidget {
             //Inserir validação - Form
             child: Form(
               child: Center(
-                child: SingleChildScrollView(
+                child: Expanded(
                   child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       //imagem
                       children: [
                         Image.asset(
                           "assets/images/vofaze3.png",
-                          height: 120,
+                          height: 100,
                         ),
                         SizedBox(
                           height: 60,

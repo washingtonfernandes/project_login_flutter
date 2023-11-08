@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/comum/cores.dart';
-import 'package:project_filtro/pages/unidades/units.dart';
-import 'package:project_filtro/services/authServices.dart';
+import 'package:project_vofaze/comum/cores.dart';
+import 'package:project_vofaze/pages/unidades/units.dart';
+import 'package:project_vofaze/services/authServices.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

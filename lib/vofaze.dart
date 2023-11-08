@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:project_filtro/pages/home/home.dart';
-import 'package:project_filtro/pages/login/login.dart';
-import 'package:project_filtro/pages/splash-screen/splash-screen.dart';
+import 'package:project_vofaze/pages/home/home.dart';
+import 'package:project_vofaze/pages/login/login.dart';
+import 'package:project_vofaze/pages/splash-screen/splash-screen.dart';
 
 class Vofaze extends StatelessWidget {
   const Vofaze({Key? key}) : super(key: key);

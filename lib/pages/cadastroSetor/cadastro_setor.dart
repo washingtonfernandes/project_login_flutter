@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/comum/cores.dart';
+import 'package:project_vofaze/comum/cores.dart';
 
-class CadastroAmbiente extends StatefulWidget {
-  const CadastroAmbiente({Key? key});
+class CadastroSetor extends StatefulWidget {
+  const CadastroSetor({Key? key});
 
   @override
-  State<CadastroAmbiente> createState() => _CadastroAmbiente();
+  State<CadastroSetor> createState() => _CadastroSetor();
 }
 
-class _CadastroAmbiente extends State<CadastroAmbiente> {
+class _CadastroSetor extends State<CadastroSetor> {
   final _formKey = GlobalKey<FormState>();
-  List<String> setores = ["Ambiente 1", "Ambiente 1", "Ambiente 1"];
+  List<String> setores = [
+    "Setor 1",
+    "Setor 2",
+    "Setor 3"
+  ]; // Exemplo de lista de setores
 
   TextEditingController setorController = TextEditingController();
   int selectedIndex = -1;
@@ -53,7 +57,7 @@ class _CadastroAmbiente extends State<CadastroAmbiente> {
                       child: TextFormField(
                         controller: setorController,
                         decoration: InputDecoration(
-                          labelText: "Ambiente",
+                          labelText: "Setor",
                           filled: true,
                           fillColor: Colors.white,
                           border: OutlineInputBorder(
@@ -64,10 +68,10 @@ class _CadastroAmbiente extends State<CadastroAmbiente> {
                         ),
                         validator: (String? value) {
                           if (value == null) {
-                            return "O ambiente não pode ser vazio!";
+                            return "O setor não pode ser vazio!";
                           }
                           if (value.length < 3) {
-                            return "Ambiente não válido!";
+                            return "Setor não válido!";
                           }
                           return null;
                         },

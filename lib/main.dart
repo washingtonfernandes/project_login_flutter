@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/vofaze.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:project_vofaze/vofaze.dart';
 import 'firebase_options.dart';
 
 void main() async {

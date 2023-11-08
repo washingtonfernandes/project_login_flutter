@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/components/decoracao_autenticacao.dart';
-import 'package:project_filtro/comum/snackbar.dart';
-import 'package:project_filtro/services/authServices.dart';
+import 'package:project_vofaze/components/decoracao_autenticacao.dart';
+import 'package:project_vofaze/comum/snackbar.dart';
+import 'package:project_vofaze/pages/recuperarSenha/recuperar_senha.dart';
+import 'package:project_vofaze/services/authServices.dart';
 
 class AutenticacaoTela extends StatefulWidget {
   const AutenticacaoTela({super.key});
@@ -124,9 +125,9 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                               botaoPrincipalClicado();
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.black, // Background color
-                              onPrimary: Colors
-                                  .yellow, // Text Color (Foreground color)
+                              foregroundColor: Colors.yellow,
+                              backgroundColor:
+                                  Colors.black, // Text Color (Foreground color)
                             ),
                             child: Text(
                               //boleano para entrar ou cadastrar
@@ -139,7 +140,10 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                               ),
                             ),
                           ),
-                          const Divider(),
+                          const Divider(
+                            height: 8,
+                            color: Colors.black,
+                          ),
                           TextButton(
                             onPressed: () {
                               setState(() {
@@ -155,6 +159,25 @@ class _AutenticacaoTelaState extends State<AutenticacaoTela> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return RecuperarSenha();
+                              }));
+                            },
+                            child: Text(
+                              "Esqueci a senha",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 16,
                                 color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ),

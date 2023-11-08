@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/comum/backImage.dart';
+import 'package:project_vofaze/comum/backImage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

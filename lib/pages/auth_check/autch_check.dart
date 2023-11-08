@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/pages/home/home.dart';
-import 'package:project_filtro/services/authServices.dart';
-import 'package:project_filtro/vofaze.dart';
+import 'package:project_vofaze/pages/home/home.dart';
+import 'package:project_vofaze/services/authServices.dart';
+import 'package:project_vofaze/vofaze.dart';
 import 'package:provider/provider.dart';
 
 class AuthCheck extends StatefulWidget {

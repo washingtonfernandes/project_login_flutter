@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:project_filtro/comum/cores.dart';
+import 'package:project_vofaze/comum/cores.dart';
 
 class MyCircle extends StatelessWidget {
   final String child;

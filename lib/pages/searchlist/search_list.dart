@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:project_filtro/comum/cores.dart';
+import 'package:project_vofaze/comum/cores.dart';
 
 class ListaTickets {
   int id;
@@ -33,7 +33,7 @@ class _SearchListState extends State<SearchList> {
       id: 1,
       usuario: 'Alice',
       ambientes: 'Sala',
-      setorNome: 'Manutenção', // Alterado o nome do parâmetro
+      setorNome: 'Manutenção',
       dataEntrega: DateTime(2023, 10, 21, 12, 0),
       descricao: 'Consertar Piso',
     ),
@@ -41,7 +41,7 @@ class _SearchListState extends State<SearchList> {
       id: 2,
       usuario: 'João',
       ambientes: '204',
-      setorNome: 'Manutenção', // Alterado o nome do parâmetro
+      setorNome: 'Manutenção',
       dataEntrega: DateTime(2023, 11, 21, 14, 30),
       descricao: 'Consertar Lâmpada',
     ),
@@ -177,8 +177,7 @@ class _SearchListState extends State<SearchList> {
                 children: [
                   Text("Usuário: ${ticket.usuario}"),
                   Text("Ambientes: ${ticket.ambientes}"),
-                  Text(
-                      "Setor: ${ticket.setorNome}"), // Alterado o nome do parâmetro
+                  Text("Setor: ${ticket.setorNome}"),
                   Text("Data de Entrega: ${ticket.dataEntrega}"),
                   Text("Descrição: ${ticket.descricao}"),
                 ],
