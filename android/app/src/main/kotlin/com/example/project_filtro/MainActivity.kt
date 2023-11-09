@@ -1,4 +1,4 @@
-package com.example.project_filtro
+package com.example.project_vofaze
 
 import io.flutter.embedding.android.FlutterActivity
 

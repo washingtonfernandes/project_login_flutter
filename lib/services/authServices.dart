@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Importe o Firestore
 import 'package:flutter/foundation.dart';
 
 class AutenticacaoServico with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore =
+      FirebaseFirestore.instance; // Instância do Firestore
   User? _usuario;
 
   User? get usuario => _usuario;
@@ -30,6 +33,13 @@ class AutenticacaoServico with ChangeNotifier {
       );
 
       await userCredential.user!.updateDisplayName(nome);
+
+      // Crie um documento igual ao do auth
+      await _firestore.collection('users').doc(userCredential.user!.uid).set({
+        'nome': nome,
+        'email': email,
+      });
+
       return null;
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
@@ -46,7 +56,10 @@ class AutenticacaoServico with ChangeNotifier {
           email: email, password: senha);
       return null;
     } on FirebaseAuthException catch (e) {
-      return e.message;
+      if (e.code == "INVALID_LOGIN_CREDENTIALS") {
+        return "Verifique a senha!";
+      }
+      return "Erro desconhecido!";
     }
   }
 
