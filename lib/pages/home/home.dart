@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_vofaze/comum/cores.dart';
+import 'package:project_vofaze/pages/cadastroAmbiente/cadastro_ambiente.dart';
+import 'package:project_vofaze/pages/cadastroSetor/cadastro_setor.dart';
+import 'package:project_vofaze/pages/cadastroUsuario/cadastro_usuario.dart';
 import 'package:project_vofaze/pages/unidades/units.dart';
 import 'package:project_vofaze/services/authServices.dart';
 
@@ -63,7 +66,36 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CadastroUsuario()));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            onPrimary: Colors.yellow,
+                          ),
+                          child: Text(
+                            "Usuários",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CadastroSetor()));
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,
@@ -82,7 +114,12 @@ class Home extends StatelessWidget {
                           height: 10,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => CadastroAmbiente()));
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.black,
                             onPrimary: Colors.yellow,
