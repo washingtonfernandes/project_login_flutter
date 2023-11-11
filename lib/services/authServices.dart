@@ -10,7 +10,6 @@ class AutenticacaoServico with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   final FirebaseFirestore _firestore =
-
       FirebaseFirestore.instance; // Instância do Firestore
 
   User? _usuario;
@@ -62,8 +61,6 @@ class AutenticacaoServico with ChangeNotifier {
 
       await userCredential.user!.updateDisplayName(nome);
 
-
-      // Crie um documento igual ao do auth
 
       await _firestore.collection('users').doc(userCredential.user!.uid).set({
 

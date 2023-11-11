@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FirestoreService {
-  // SETORES
+  // SETORES------------------------------------------------
 
   // buscar coleção de setores
   final CollectionReference setores =
@@ -28,23 +28,23 @@ class FirestoreService {
     });
   }
 
-  // adeletar
+  // deletar
   Future<void> deleteSetor(String docID) {
     return setores.doc(docID).delete();
   }
 
-  // AMBIENTES ----------------------------------------------
+  // AMBIENTES -----------------------------------------------------------
   final CollectionReference ambientes =
       FirebaseFirestore.instance.collection("ambientes");
 
-  // adicionar un novo setor
+  // adicionar un novo ambiente
   Future<void> addAmbiente(String ambiente) {
     return ambientes.add({
       "ambiente": ambiente,
     });
   }
 
-  // retornar os setores
+  // retornar os ambientes
   Stream<QuerySnapshot> getAmbientesStream() {
     final ambientesStream =
         ambientes.orderBy("ambiente", descending: true).snapshots();
@@ -58,8 +58,29 @@ class FirestoreService {
     });
   }
 
-  // adeletar
+  // deletar
   Future<void> deleteAmbiente(String docID) {
     return ambientes.doc(docID).delete();
+  }
+
+  // USUÁRIOS -----------------------------------------------------------
+
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection("users");
+
+// Retornar os usuários
+  Stream<List<Map<String, dynamic>>> getUsuariosStreamWithSensitiveData() {
+    final usuariosStream = users.orderBy("nome", descending: true).snapshots();
+
+    return usuariosStream.map((snapshot) {
+      return snapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        return {
+          "nome": data["nome"],
+          "email": data["email"],
+          "senha": data["senha"],
+        };
+      }).toList();
+    });
   }
 }

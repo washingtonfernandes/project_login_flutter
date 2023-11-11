@@ -1,21 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 import 'package:flutter/material.dart';
-
 
 import 'package:flutter/widgets.dart';
 
-
 import 'package:project_vofaze/comum/cores.dart';
-
 
 import 'package:project_vofaze/services/firestore.dart';
 
 
 class CadastroAmbiente extends StatefulWidget {
 
-  const CadastroAmbiente({super.key});
+  const CadastroAmbiente({Key? key}) : super(key: key);
 
 
   @override
@@ -29,8 +25,7 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
   final FirestoreService firestoreService = FirestoreService();
 
-
-  final TextEditingController textControler = TextEditingController();
+  final TextEditingController textController = TextEditingController();
 
 
   void openboxAmbiente({String? docID}) {
@@ -39,11 +34,11 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
       context: context,
 
-      builder: (content) => AlertDialog(
+      builder: (context) => AlertDialog(
 
         content: TextField(
 
-          controller: textControler,
+          controller: textController,
 
           decoration: InputDecoration(
 
@@ -69,17 +64,15 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
                 if (docID == null) {
 
-                  firestoreService.addAmbiente(textControler.text);
+                  firestoreService.addAmbiente(textController.text);
 
                 } else {
 
-                  firestoreService.updateAmbiente(docID, textControler.text);
+                  firestoreService.updateAmbiente(docID, textController.text);
 
                 }
 
-
-                textControler.clear();
-
+                textController.clear();
 
                 Navigator.pop(context);
 
@@ -114,7 +107,7 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
       context: context,
 
-      builder: (content) => AlertDialog(
+      builder: (context) => AlertDialog(
 
         title: Center(
 
@@ -175,7 +168,6 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
                   onPressed: () {
 
                     firestoreService.deleteAmbiente(docID);
-
 
                     Navigator.pop(context);
 
@@ -266,7 +258,6 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
                   List ambientesList = snapshot.data!.docs;
 
-
                   return ListView.builder(
 
                     itemCount: ambientesList.length,
@@ -275,17 +266,13 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
                       DocumentSnapshot document = ambientesList[index];
 
-
                       String docID = document.id;
-
 
                       Map<String, dynamic> data =
 
                           document.data() as Map<String, dynamic>;
 
-
                       String ambienteText = data["ambiente"];
-
 
                       return SingleChildScrollView(
 
@@ -357,7 +344,17 @@ class _CadastroAmbienteState extends State<CadastroAmbiente> {
 
                 } else {
 
-                  return const Text("Sem ambiente...");
+                  return Center(
+
+                      child: Container(
+
+                          child: const Text(
+
+                    "Sem ambiente...",
+
+                    style: TextStyle(fontSize: 16),
+
+                  )));
 
                 }
 
